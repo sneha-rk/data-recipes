@@ -2,7 +2,7 @@
 
 > **Context**: This list grew out of a [thread](https://x.com/yoavgo/status/2048781896499212518?s=20) on what to teach in an LLM course. This list covers the creation and scaling of pretraining, mid-train and post-training datasets.
 > 
-> This is a work in progress, so feel free to send in changes!
+> Work in progress, PRs welcome
 
 ## Table of Contents
 
@@ -18,6 +18,7 @@
   - [SFT](#sft)
   - [Preference Data & RLHF](#preference-data--rlhf)
   - [RL](#rl)
+  - [RL Scaling](#rl--scaling)
   - [Annotation & Human Feedback Quality](#annotation--human-feedback-quality)
   - [Synthetic Data](#synthetic-data)
 
@@ -134,7 +135,7 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 |---|---|
 | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) — Lightman et al. (2023) | PRMs outperform ORMs on MATH; releases PRM800K (800K step-level human feedback labels) |
 
-### Annotation & Human Feedback Quality
+#### Annotation & Human Feedback Quality
 
 | Paper | Notes |
 |---|---|
@@ -142,18 +143,18 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | [RLHF and ChatGPT Data Moats](https://www.interconnects.ai/p/rlhf-chatgpt-data-moats?utm_source=publication-search) — Interconnects | Argues proprietary preference data, not model weights, is the lasting competitive moat; contextualizes why companies guard their feedback data |
 | [MATH-Shepherd](https://arxiv.org/abs/2312.08935) — Wang et al. (2023) | Automated PRM construction without human labels via execution-based step verification |
 
-### RL scaling
+#### RL scaling
 
 | Paper | Notes |
 |---|---|
 | [Midtraining Bridges Pretraining and Posttraining Distributions](https://arxiv.org/abs/2510.14865) — Liu et al. (2025) | Frames midtraining as bridging the gap between pretraining and posttraining data distributions; clarifies when midtraining helps vs. when SFT or RL is the right lever |
 | [The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786) — Khatri et al. (2025) | Systematic study (400K+ GPU-hours) establishing predictive scaling laws for RL; fits sigmoidal compute-performance curves and introduces ScaleRL, a stable recipe that scales to 100K GPU-hours with pre-training-level predictability |
 
-### Synthetic Data [WIP]
+#### Synthetic Data [WIP]
 
-Synthetic data spans the full training pipeline: generating textbook-quality pretraining text, diverse instruction-following data, and complex multi-step reasoning traces. Several of the RL datasets discussed above can be argued to be synthetic. I've deliberately excluded papers that distill RL data from stronger closed-source models. 
+Synthetic data spans the full training pipeline: generating textbook-quality pretraining text, diverse instruction-following data, and complex multi-step reasoning traces. Several of the RL datasets discussed above can be argued to be synthetic. 
 
-So, I've mainly linked some blog posts here that cover the high level principles:
+I've deliberately excluded papers that distill RL data from stronger closed-source models, so, I've mainly linked some blog posts here that cover the high level principles:
 
 | Resource | Notes |
 |---|---|
