@@ -18,9 +18,7 @@
   - [SFT](#sft)
   - [Preference Data & RLHF](#preference-data--rlhf)
   - [RL](#rl)
-  - [RL Scaling](#rl--scaling)
-  - [Annotation & Human Feedback Quality](#annotation--human-feedback-quality)
-  - [Synthetic Data](#synthetic-data)
+- [Further Reading: Practitioner Perspectives](#further-reading-practitioner-perspectives-wip)
 
 
 ## Pretraining Data
@@ -116,7 +114,14 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | [Constitutional AI](https://arxiv.org/abs/2212.08073) — Bai et al. (2022) | Replace human preference labeling with AI feedback (RLAIF); opens up data scale |
 | [Direct Preference Optimization (DPO)](https://arxiv.org/abs/2305.18290) — Rafailov et al. (2023) | Revolutionized post-training by bypassing the explicit reward model and unstable PPO loop; allows preference tuning directly on the policy via a simple classification loss |
 
+#### When Human Judgment Falls Short: Non-Verifiable Tasks [WIP]
 
+The core bottleneck of RLHF is that humans must be able to evaluate outputs reliably. As models get smarter on specialized tasks, this assumption breaks down.
+
+| Paper | Notes |
+|---|---|
+| [AI Safety via Debate](https://arxiv.org/abs/1805.00899) — Irving et al. (2018) | Proposed training agents via self-play debate: two agents argue opposing positions and a human judges; in theory, debate with optimal play can answer any question in PSPACE with polynomial-time judges — a theoretical framework for supervising superhuman models |
+| [Measuring Progress on Scalable Oversight for Large Language Models](https://arxiv.org/abs/2211.03540) — Bowman et al. (2022) | Empirical study of scalable oversight; uses tasks where domain experts succeed but non-experts struggle to simulate the problem of evaluating outputs that exceed the rater's competence |
 
 ### RL
 
@@ -134,6 +139,14 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | Paper | Notes |
 |---|---|
 | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) — Lightman et al. (2023) | PRMs outperform ORMs on MATH; releases PRM800K (800K step-level human feedback labels) |
+
+#### Reward Models [WIP]
+
+The [Llama 3 paper](https://arxiv.org/abs/2407.21783) Section 4.2 is worth reading for how Meta trained and iterated on reward models in production — covering preference annotation guidelines, data mix, and the RM's role in filtering SFT data.
+
+| Paper | Notes |
+|---|---|
+| [RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) — Lambert et al. (2024) | First systematic benchmark for reward models; covers chat, reasoning, and safety; reveals failure modes in models that appear strong by other metrics |
 
 #### Annotation & Human Feedback Quality
 
@@ -160,3 +173,11 @@ I've deliberately excluded papers that distill RL data from stronger closed-sour
 |---|---|
 | [Learning with not Enough Data Series](https://lilianweng.github.io/posts/2021-12-05-semi-supervised/) — Lilian Weng | Three part series on Semi-Supervised Learning, Active Learning and Data Generation |
 | [Frontiers in Synthetic Data](https://www.interconnects.ai/p/frontiers-in-synthetic-data?utm_source=publication-search) — Nathan Lambert | Overview of synthetic data use across pretraining, SFT, and RL; covers quality control, diversity, and the role of verifiers |
+
+## Further Reading: Practitioner Perspectives [WIP]
+
+Papers don't capture the operational side of data pipelines — what it takes to run annotation at scale, manage contractor quality, and handle the human side of RLHF. Resources here are more practitioner-facing.
+
+| Resource | Notes |
+|---|---|
+| [Anthropic Uses Surge AI for RLHF](https://surgehq.ai/blog/anthropic-surge-ai-rlhf-platform-train-llm-assistant-human-feedback) — Surge AI | Practitioner account of running RLHF annotation at scale; covers task design, quality control, and annotator calibration from a data vendor perspective |
