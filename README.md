@@ -26,6 +26,7 @@ Going from common crawl to a reasonable dataset with data audits, ablations, dat
 | Paper | Notes |
 |---|---|
 | [Exploring the Limits of Transfer Learning (T5)](https://arxiv.org/abs/1910.10683) — Raffel et al. (2020) | Introduced C4 (Colossal Clean Crawled Corpus) via heuristic filtering of Common Crawl; data quality methodology became a template for many subsequent corpora |
+| [The Pile: An 800GB Dataset of Diverse Text for Language Modeling](https://arxiv.org/abs/2101.00027) — Gao et al. (2020) | Pre-dates Dolma and C4 but was foundational for open-source datasets; established the blueprint for diverse, multi-domain data mixing (22 sources) and rigorous dataset documentation |
 | [Dolma](https://arxiv.org/abs/2402.00159) — Soldaini et al. (2024) | Open 3T-token corpus from AI2 used to train OLMo; documents full filtering pipeline and data provenance; one of the most transparent large pretraining datasets |
 
 ### Data Audits
@@ -47,6 +48,7 @@ Going from common crawl to a reasonable dataset with data audits, ablations, dat
 |---|---|
 | [A Pretrainer's Guide to Training Data](https://arxiv.org/abs/2305.13169) — Longpre et al. (2023) | Systematic study of how data age, domain coverage, quality, and toxicity affect downstream performance; practical guidance on which data choices matter most |
 | Ask-LLM and Perplexity Filtering — Sachdeva et al. (2024) | Compares LLM prompting vs. perplexity as quality proxies; neither is clearly dominant |
+| [The RefinedWeb Dataset for Falcon LLM](https://arxiv.org/abs/2306.01116) — Penedo et al. (2023) | Proved that aggressively filtered and deduplicated web data (CommonCrawl) alone can match or outperform curated corpora; a masterclass in macro-data processing |
 
 ### Scaling Laws & Data Selection
 
@@ -97,6 +99,7 @@ Mid-training (continued pretraining on curated domain data) is how models acquir
 | [InstructGPT](https://arxiv.org/abs/2203.02155) — Ouyang et al. (2022) | Defined the RLHF pipeline; read the data collection and labeler instruction sections closely |
 | [Anthropic HH Dataset](https://arxiv.org/abs/2204.05862) — Bai et al. (2022) | Helpful & Harmless preference data with open release; how raters are instructed shapes everything |
 | [Constitutional AI](https://arxiv.org/abs/2212.08073) — Bai et al. (2022) | Replace human preference labeling with AI feedback (RLAIF); opens up data scale |
+| [Direct Preference Optimization (DPO)](https://arxiv.org/abs/2305.18290) — Rafailov et al. (2023) | Revolutionized post-training by bypassing the explicit reward model and unstable PPO loop; allows preference tuning directly on the policy via a simple classification loss |
 
 
 
