@@ -107,7 +107,7 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 
 ### RL
 
-### Preference Data & RLHF
+#### Preference Data & RLHF
 
 | Paper | Notes |
 |---|---|
