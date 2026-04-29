@@ -1,8 +1,8 @@
 # Data for LLMs: A Reading List
 
 > **Context**: This list grew out of a [thread](https://x.com/yoavgo/status/2048781896499212518?s=20) on what to teach in an LLM course. This list covers the creation and scaling of pretraining, mid-train and post-training datasets.
-
-
+> 
+> This is a work in progress, so feel free to send in changes!
 
 ## Table of Contents
 
@@ -136,7 +136,7 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | [RLHF and ChatGPT Data Moats](https://www.interconnects.ai/p/rlhf-chatgpt-data-moats?utm_source=publication-search) — Interconnects | Argues proprietary preference data, not model weights, is the lasting competitive moat; contextualizes why companies guard their feedback data |
 | [MATH-Shepherd](https://arxiv.org/abs/2312.08935) — Wang et al. (2023) | Automated PRM construction without human labels via execution-based step verification |
 
-#### RL scaling
+### RL scaling
 
 | Paper | Notes |
 |---|---|
