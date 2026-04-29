@@ -7,13 +7,19 @@
 ## Table of Contents
 
 - [Pretraining Data](#pretraining-data)
-- [Mid-training](#mid-training)
-- [Instruction Tuning (SFT)](#instruction-tuning-sft)
-- [Preference Data & RLHF](#preference-data--rlhf)
-- [RL & Verifiable Rewards](#rl--verifiable-rewards)
-- [Synthetic Data](#synthetic-data)
-- [Scaling Laws & Data Selection](#scaling-laws--data-selection)
-- [Annotation & Human Feedback Quality](#annotation--human-feedback-quality)
+  - [Datasets & Documentation](#datasets--documentation)
+  - [Data Audits and Transparency](#data-audits-and-transparency)
+  - [Deduplication](#deduplication)
+  - [Quality Filtering & Data Selection](#quality-filtering--data-selection)
+  - [Scaling Laws & Data Selection](#scaling-laws--data-selection)
+  - [Data Mixing & Domain Weights](#data-mixing--domain-weights)
+- [Post-training Data](#post-training-data)
+  - [Mid-training](#mid-training)
+  - [SFT](#sft)
+  - [Preference Data & RLHF](#preference-data--rlhf)
+  - [RL](#rl)
+  - [Annotation & Human Feedback Quality](#annotation--human-feedback-quality)
+  - [Synthetic Data](#synthetic-data)
 
 
 ## Pretraining Data
