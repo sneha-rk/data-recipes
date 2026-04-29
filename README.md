@@ -156,6 +156,8 @@ Synthetic data spans the full training pipeline: generating textbook-quality pre
 
 I've deliberately excluded papers that distill RL data from stronger closed-source models, so, I've mainly linked some blog posts here that cover the high level principles:
 
+- TODO: self-play and self-distillation papers
+
 | Resource | Notes |
 |---|---|
 | [Learning with not Enough Data Series](https://lilianweng.github.io/posts/2021-12-05-semi-supervised/) — Lilian Weng | Three part series on Semi-Supervised Learning, Active Learning and Data Generation |
