@@ -26,14 +26,20 @@ Going from common crawl to a reasonable dataset with data audits, ablations, dat
 | Paper | Notes |
 |---|---|
 | [Exploring the Limits of Transfer Learning (T5)](https://arxiv.org/abs/1910.10683) — Raffel et al. (2020) | Introduced C4 (Colossal Clean Crawled Corpus) via heuristic filtering of Common Crawl; data quality methodology became a template for many subsequent corpora |
+| [Language Models are Few-Shot Learners (GPT-3)](https://arxiv.org/abs/2005.14165) — Brown et al. (2020) | Section 2.2 is the foundational text for classifier-based quality filtering: trained a logistic regression classifier to distinguish high-quality text (WebText/Reddit) from raw Common Crawl, then probabilistically upsampled high-scoring documents — the direct ancestor of Ask-LLM |
 | [The Pile: An 800GB Dataset of Diverse Text for Language Modeling](https://arxiv.org/abs/2101.00027) — Gao et al. (2020) | Pre-dates Dolma and C4 but was foundational for open-source datasets; established the blueprint for diverse, multi-domain data mixing (22 sources) and rigorous dataset documentation |
+| [Scaling Language Models: Methods, Analysis & Insights from Training Gopher](https://arxiv.org/abs/2112.11446) — Rae et al. (2021) | Effectively the encyclopedia of heuristic and quality filtering; details the exact pipeline for cleaning MassiveText, combining document-level heuristics, repetition removal, and classifier-based quality selection |
 | [Dolma](https://arxiv.org/abs/2402.00159) — Soldaini et al. (2024) | Open 3T-token corpus from AI2 used to train OLMo; documents full filtering pipeline and data provenance; one of the most transparent large pretraining datasets |
 
-### Data Audits
+### Data Audits and Transparency
 
 | Paper | Notes |
 |---|---|
-| [Quality at a Glance: An Audit of Web-Crawled Corpora](https://arxiv.org/abs/2103.12028) — Luccioni & Viviano (2021) | Audits C4, mC4, OSCAR, and REALNEWS for hate speech, adult content, and boilerplate; motivates quality filtering as a necessity, not just an optimization |
+| [Quality at a Glance: An Audit of Web-Crawled Multilingual Datasets](https://arxiv.org/abs/2103.12028) — Kreutzer et al. (2022) | Massive manual audit of multilingual web corpora (mC4, OSCAR); found lower-resource languages are plagued with boilerplate, wrong-language text, and incorrect language classifications |
+| [What's in the Box? An Analysis of Undesirable Content in the Common Crawl Corpus](https://arxiv.org/abs/2105.02732) — Luccioni & Viviano (2021) | Foundational audit of Common Crawl showing the volume of hate speech and adult content present before filtering; proves data curation is a safety necessity, not just an optimization |
+| [Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus](https://arxiv.org/abs/2104.08758) — Dodge et al. (2021) | Definitive case study on what survives a filtering pipeline; C4 still contains machine-translated patents and benchmark contamination, and blocklist filtering disproportionately erases text from minority identities |
+| [Data Portraits: Recording Foundation Model Training Data](https://arxiv.org/abs/2303.03919) — Marone & Van Durme (2023) | Efficient data sketching method letting downstream users query whether specific text was included in a model's training data; critical for checking test set leakage and memorization |
+| [What's In My Big Data? (WIMBD)](https://arxiv.org/abs/2310.20707) — Elazar et al. (2023) | Scalable platform to search and analyze massive pretraining corpora; exposes toxic content, PII, benchmark leakage, and duplicated domains at macro scale |
 
 ### Deduplication
 
@@ -47,7 +53,7 @@ Going from common crawl to a reasonable dataset with data audits, ablations, dat
 | Paper | Notes |
 |---|---|
 | [A Pretrainer's Guide to Training Data](https://arxiv.org/abs/2305.13169) — Longpre et al. (2023) | Systematic study of how data age, domain coverage, quality, and toxicity affect downstream performance; practical guidance on which data choices matter most |
-| Ask-LLM and Perplexity Filtering — Sachdeva et al. (2024) | Compares LLM prompting vs. perplexity as quality proxies; neither is clearly dominant |
+| [How to Train Data-Efficient LLMs (Ask-LLM)](https://arxiv.org/abs/2402.09668) — Sachdeva et al. (2024) | Compares 19 data selection methods; Ask-LLM (LLM-based quality scoring) and Density (coverage-based) emerge as the best in their respective categories |
 | [The RefinedWeb Dataset for Falcon LLM](https://arxiv.org/abs/2306.01116) — Penedo et al. (2023) | Proved that aggressively filtered and deduplicated web data (CommonCrawl) alone can match or outperform curated corpora; a masterclass in macro-data processing |
 
 ### Scaling Laws & Data Selection
@@ -81,6 +87,8 @@ Mid-training (continued pretraining on curated domain data) is how models acquir
 | [Llama 2 Long](https://arxiv.org/abs/2309.16039) — Chen et al. (2023) | How Meta extended context window in mid-training; data mix shifts during training matter |
 | [MiniCPM](https://arxiv.org/abs/2404.06395) — Hu et al. (2024) | Multi-stage training with data decay schedules; shows how staged training affects final quality |
 
+A major open question is when to midtrain at all (and relatedly, when to SFT vs. RL): [Midtraining Bridges Pretraining and Posttraining Distributions](https://arxiv.org/abs/2510.14865) — Liu et al. (2025)
+
 ---
 
 ### SFT
@@ -103,9 +111,7 @@ Mid-training (continued pretraining on curated domain data) is how models acquir
 
 
 
-### RL & Verifiable Rewards
-
-The core insight: verifiable rewards (math, code) make RL from scratch tractable. 
+### RL
 
 #### Reasoning & Math Datasets
 
@@ -114,6 +120,7 @@ The core insight: verifiable rewards (math, code) make RL from scratch tractable
 | [GSM8K](https://arxiv.org/abs/2110.14168) — Cobbe et al. (2021) | Grade school math with solutions; became standard for chain-of-thought evaluation |
 | [MATH](https://arxiv.org/abs/2103.03874) — Hendrycks et al. (2021) | Competition math; hard ceiling that drove PRM and ORM research |
 | [HumanEval](https://arxiv.org/abs/2107.03374) — Chen et al. (2021) | Code generation with unit test verification; a model of what verifiable rewards look like |
+
 
 #### Process vs. Outcome Reward Models
 
@@ -130,9 +137,16 @@ The core insight: verifiable rewards (math, code) make RL from scratch tractable
 | [RLHF and ChatGPT Data Moats](https://www.interconnects.ai/p/rlhf-chatgpt-data-moats?utm_source=publication-search) — Interconnects | Argues proprietary preference data, not model weights, is the lasting competitive moat; contextualizes why companies guard their feedback data |
 | [MATH-Shepherd](https://arxiv.org/abs/2312.08935) — Wang et al. (2023) | Automated PRM construction without human labels via execution-based step verification |
 
+#### RL scaling
+
+| Paper | Notes |
+|---|---|
+| [Midtraining Bridges Pretraining and Posttraining Distributions](https://arxiv.org/abs/2510.14865) — Liu et al. (2025) | Frames midtraining as bridging the gap between pretraining and posttraining data distributions; clarifies when midtraining helps vs. when SFT or RL is the right lever |
+| [The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786) — Khatri et al. (2025) | Systematic study (400K+ GPU-hours) establishing predictive scaling laws for RL; fits sigmoidal compute-performance curves and introduces ScaleRL, a stable recipe that scales to 100K GPU-hours with pre-training-level predictability |
+
 ### Synthetic Data
 
-Synthetic data spans the full training pipeline: generating textbook-quality pretraining text, diverse instruction-following data, and complex multi-step reasoning traces.
+Synthetic data spans the full training pipeline: generating textbook-quality pretraining text, diverse instruction-following data, and complex multi-step reasoning traces. Several of the RL datasets discussed above can be argued to be synthetic. So I've mainly linked some blog posts here
 
 | Resource | Notes |
 |---|---|
