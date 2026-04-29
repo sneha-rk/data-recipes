@@ -105,6 +105,8 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 
 ---
 
+### RL
+
 ### Preference Data & RLHF
 
 | Paper | Notes |
@@ -122,8 +124,6 @@ The core bottleneck of RLHF is that humans must be able to evaluate outputs reli
 |---|---|
 | [AI Safety via Debate](https://arxiv.org/abs/1805.00899) — Irving et al. (2018) | Proposed training agents via self-play debate: two agents argue opposing positions and a human judges; in theory, debate with optimal play can answer any question in PSPACE with polynomial-time judges — a theoretical framework for supervising superhuman models |
 | [Measuring Progress on Scalable Oversight for Large Language Models](https://arxiv.org/abs/2211.03540) — Bowman et al. (2022) | Empirical study of scalable oversight; uses tasks where domain experts succeed but non-experts struggle to simulate the problem of evaluating outputs that exceed the rater's competence |
-
-### RL
 
 #### Reasoning & Math Datasets
 
@@ -169,8 +169,6 @@ Synthetic data spans the full training pipeline: generating textbook-quality pre
 
 I've deliberately excluded papers that distill RL data from stronger closed-source models, so, I've mainly linked some blog posts here that cover the high level principles:
 
-- TODO: self-play and self-distillation papers
-
 | Resource | Notes |
 |---|---|
 | [Learning with not Enough Data Series](https://lilianweng.github.io/posts/2021-12-05-semi-supervised/) — Lilian Weng | Three part series on Semi-Supervised Learning, Active Learning and Data Generation |
@@ -183,3 +181,7 @@ Papers don't capture the operational side of data pipelines — what it takes to
 | Resource | Notes |
 |---|---|
 | [Anthropic Uses Surge AI for RLHF](https://surgehq.ai/blog/anthropic-surge-ai-rlhf-platform-train-llm-assistant-human-feedback) — Surge AI | Practitioner account of running RLHF annotation at scale; covers task design, quality control, and annotator calibration from a data vendor perspective |
+
+
+
+- TODO: self-play and self-distillation papers
