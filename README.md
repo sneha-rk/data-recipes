@@ -127,7 +127,6 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | Paper | Notes |
 |---|---|
 | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) — Lightman et al. (2023) | PRMs outperform ORMs on MATH; releases PRM800K (800K step-level human feedback labels) |
-| [MATH-Shepherd](https://arxiv.org/abs/2312.08935) — Wang et al. (2023) | Automated PRM construction without human labels via execution-based step verification |
 
 ### Annotation & Human Feedback Quality
 
@@ -144,13 +143,13 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | [Midtraining Bridges Pretraining and Posttraining Distributions](https://arxiv.org/abs/2510.14865) — Liu et al. (2025) | Frames midtraining as bridging the gap between pretraining and posttraining data distributions; clarifies when midtraining helps vs. when SFT or RL is the right lever |
 | [The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786) — Khatri et al. (2025) | Systematic study (400K+ GPU-hours) establishing predictive scaling laws for RL; fits sigmoidal compute-performance curves and introduces ScaleRL, a stable recipe that scales to 100K GPU-hours with pre-training-level predictability |
 
-### Synthetic Data
+### Synthetic Data [WIP]
 
-Synthetic data spans the full training pipeline: generating textbook-quality pretraining text, diverse instruction-following data, and complex multi-step reasoning traces. Several of the RL datasets discussed above can be argued to be synthetic. So I've mainly linked some blog posts here
+Synthetic data spans the full training pipeline: generating textbook-quality pretraining text, diverse instruction-following data, and complex multi-step reasoning traces. Several of the RL datasets discussed above can be argued to be synthetic. I've deliberately excluded papers that distill RL data from stronger closed-source models. 
+
+So, I've mainly linked some blog posts here that cover the high level principles:
 
 | Resource | Notes |
 |---|---|
-| [Learning with not Enough Data Part 1: Semi-Supervised Learning](https://lilianweng.github.io/posts/2021-12-05-semi-supervised/) — Lilian Weng | Self-training, consistency regularization, co-training; foundational methods for leveraging unlabeled data |
-| [Learning with not Enough Data Part 2: Active Learning](https://lilianweng.github.io/posts/2022-02-20-active-learning/) — Lilian Weng | Query strategies for selecting the most informative samples; relevant to human feedback efficiency |
-| [Learning with not Enough Data Part 3: Data Generation](https://lilianweng.github.io/posts/2022-04-15-data-gen/) — Lilian Weng | Data augmentation and generation techniques; covers early LLM-based generation approaches |
+| [Learning with not Enough Data Series](https://lilianweng.github.io/posts/2021-12-05-semi-supervised/) — Lilian Weng | Three part series on Semi-Supervised Learning, Active Learning and Data Generation |
 | [Frontiers in Synthetic Data](https://www.interconnects.ai/p/frontiers-in-synthetic-data?utm_source=publication-search) — Nathan Lambert | Overview of synthetic data use across pretraining, SFT, and RL; covers quality control, diversity, and the role of verifiers |
