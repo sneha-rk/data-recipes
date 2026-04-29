@@ -16,8 +16,8 @@
 - [Post-training Data](#post-training-data)
   - [Mid-training](#mid-training)
   - [SFT](#sft)
-  - [Preference Data & RLHF](#preference-data--rlhf)
   - [RL](#rl)
+    - [Preference Data & RLHF](#preference-data--rlhf)
 - [Further Reading: Practitioner Perspectives](#further-reading-practitioner-perspectives-wip)
 
 
@@ -94,8 +94,6 @@ Mid-training (continued pretraining on curated domain data) is how models acquir
 
 A major open question is when to midtrain at all (and relatedly, when to SFT vs. RL): [Midtraining Bridges Pretraining and Posttraining Distributions](https://arxiv.org/abs/2510.14865) — Liu et al. (2025)
 
----
-
 ### SFT
 
 | Paper | Notes |
@@ -103,9 +101,9 @@ A major open question is when to midtrain at all (and relatedly, when to SFT vs.
 | [FLAN](https://arxiv.org/abs/2109.01652) — Wei et al. (2021) | First large-scale instruction tuning; template-based construction from existing NLP benchmarks |
 | [Self-Instruct](https://arxiv.org/abs/2212.10560) — Wang et al. (2022) | Bootstrap instruction data from a model's own generations; the basis for most synthetic SFT pipelines |
 
----
-
 ### RL
+
+RL-based post-training has become central to aligning models on both subjective and verifiable tasks. The sections below cover the data and feedback mechanisms that make it work: preference collection, reward modeling, scalable oversight, and the datasets used for verifiable-reward training.
 
 #### Preference Data & RLHF
 
@@ -139,6 +137,7 @@ The core bottleneck of RLHF is that humans must be able to evaluate outputs reli
 | Paper | Notes |
 |---|---|
 | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) — Lightman et al. (2023) | PRMs outperform ORMs on MATH; releases PRM800K (800K step-level human feedback labels) |
+| [MATH-Shepherd](https://arxiv.org/abs/2312.08935) — Wang et al. (2023) | Automated PRM construction without human labels via execution-based step verification |
 
 #### Reward Models [WIP]
 
@@ -154,7 +153,6 @@ The [Llama 3 paper](https://arxiv.org/abs/2407.21783) Section 4.2 is worth readi
 |---|---|
 | [Human Data Quality](https://lilianweng.github.io/posts/2024-02-05-human-data-quality/) — Lilian Weng (2024) | Comprehensive survey of annotation challenges: inter-annotator agreement, label noise, rater bias; covers crowdsourcing and expert labeling |
 | [RLHF and ChatGPT Data Moats](https://www.interconnects.ai/p/rlhf-chatgpt-data-moats?utm_source=publication-search) — Interconnects | Argues proprietary preference data, not model weights, is the lasting competitive moat; contextualizes why companies guard their feedback data |
-| [MATH-Shepherd](https://arxiv.org/abs/2312.08935) — Wang et al. (2023) | Automated PRM construction without human labels via execution-based step verification |
 
 #### RL scaling
 
@@ -174,6 +172,8 @@ I've deliberately excluded papers that distill RL data from stronger closed-sour
 | [Learning with not Enough Data Series](https://lilianweng.github.io/posts/2021-12-05-semi-supervised/) — Lilian Weng | Three part series on Semi-Supervised Learning, Active Learning and Data Generation |
 | [Frontiers in Synthetic Data](https://www.interconnects.ai/p/frontiers-in-synthetic-data?utm_source=publication-search) — Nathan Lambert | Overview of synthetic data use across pretraining, SFT, and RL; covers quality control, diversity, and the role of verifiers |
 
+#### Self-play & Self-distillation [WIP]
+
 ## Further Reading: Practitioner Perspectives [WIP]
 
 Papers don't capture the operational side of data pipelines — what it takes to run annotation at scale, manage contractor quality, and handle the human side of RLHF. Resources here are more practitioner-facing.
@@ -181,7 +181,3 @@ Papers don't capture the operational side of data pipelines — what it takes to
 | Resource | Notes |
 |---|---|
 | [Anthropic Uses Surge AI for RLHF](https://surgehq.ai/blog/anthropic-surge-ai-rlhf-platform-train-llm-assistant-human-feedback) — Surge AI | Practitioner account of running RLHF annotation at scale; covers task design, quality control, and annotator calibration from a data vendor perspective |
-
-
-
-- TODO: self-play and self-distillation papers
