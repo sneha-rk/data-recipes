@@ -130,6 +130,7 @@ The core bottleneck of RLHF is that humans must be able to evaluate outputs reli
 | [GSM8K](https://arxiv.org/abs/2110.14168) — Cobbe et al. (2021) | Grade school math with solutions; became standard for chain-of-thought evaluation |
 | [MATH](https://arxiv.org/abs/2103.03874) — Hendrycks et al. (2021) | Competition math; hard ceiling that drove PRM and ORM research |
 | [HumanEval](https://arxiv.org/abs/2107.03374) — Chen et al. (2021) | Code generation with unit test verification; a model of what verifiable rewards look like |
+| [How We Broke Top AI Agent Benchmarks](https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/) — Wang et al. (2026) | Built an automated agent that exploits eight major agent benchmarks (SWE-bench, WebArena, GAIA, etc.) to score 73–100% without solving tasks; documents isolation failures, answer leakage, and weak validation — a strong reminder that benchmark scores are only as trustworthy as the evaluation harness |
 
 
 #### Process vs. Outcome Reward Models
